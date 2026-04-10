@@ -6,3 +6,5 @@ seaborn
 statsmodels
 dmba
 ipykernel
+openpyxl
+pmdarima
