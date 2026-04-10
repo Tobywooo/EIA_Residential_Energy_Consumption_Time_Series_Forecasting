@@ -84,24 +84,31 @@ In the 6-month SMA, each of the last 6 months is given a weight of about 16.6% o
 #### SARIMA Performance Metrics
 ![alt text](images/8_plot.png) 
 
-MAE:77.9812 
-RMSE:102.9079
-MAPE:4.7379%
-R²:0.9224
+#### Final Model Performance
+| MAE | RMSE | MAPE | R² |
+| :---: | :---: | :---: | :---: |
+| 77.9812 | 102.9079 | **4.7379%** | **0.9224** |
 
 ### Comparing SARIMA with Quadratic-Trend + Seasonal 
 The SARIMA model performs better. Below is a chart comparing the two models. 
 
-Metric|	Quadratic|  SARIMA| Winner| Improvement
-RMSE  |	140.03	 |  102.91| SARIMA|	26% lower error
-MAPE  |	7.5%	 |  4.74% | SARIMA|	37% more accurate
-R^2	  | 0.8564	 |  0.9224| SARIMA|	7% more variance explained
+#### Model Comparison: Quadratic vs. SARIMA
+| Metric | Quadratic | SARIMA | Winner | Improvement |
+| :--- | :---: | :---: | :---: | :--- |
+| **RMSE** | 140.03 | 102.91 | **SARIMA** | 26% lower error |
+| **MAPE** | 7.5% | 4.74% | **SARIMA** | 37% more accurate |
+| **R²** | 0.8564 | 0.9224 | **SARIMA** | 7% more variance explained |
 
 While the Quadratic Trend and Seasonality model was the best of the initial baseline models, the SARIMA model is significantly more accurate. It reduced the MAPE from 7.5% to 4.74% and increased the R^2from 0.8564 to 0.9224. This improvement is due to SARIMA's ability to use both the historical trend and the most recent observed values to refine its predictions, whereas the Quadratic model relies solely on a fixed mathematical function of time. 
 
 ### Error Analysis & Model Anomalies explained by Impact of External Factors on Forecast Accuracy
 ![alt text](images/10_sarima_residual.png) 
-![alt text](images/10_largest_error.png) 
+
+#### Analysis of Largest Forecast Errors
+| Date | Error Value | Prediction Status |
+| :--- | :---: | :--- |
+| 2025-01-01 | 327.0949 | Under-predicted |
+| 2023-12-01 | -202.5280 | Over-predicted |
 
 In a quick google search, January 2025 had extreme climate volatility featuring a very costly wildfire near LA and a historic blizzard with extreme snowfall in the Gulf Cost. Due to rare shock scenarios that were not previously represented in the data, extreme energy usages during this time were unable to be predicted accurately causing the under prediction of energy consumption. 
 December of 2023 had record setting warmth with the warmest December in many states which would decrease the need for energy consumption on heating during that time. Therefore, the model would overpredict the amount of usage. 
